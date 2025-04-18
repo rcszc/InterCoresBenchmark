@@ -1,0 +1,12 @@
+{
+  "WindowSizeWidth": 1280,
+  "WindowSizeHeight": 720,
+  "WindowVsync": true,
+  "WindowMSAA": 4,
+  "ImGuiShaderVersion": "#version 330 core",
+  "ImGuiFontPath": "Configs/jetbm_extra_bolditalic.ttf",
+  "ImGuiFontSize": 26.8,
+  "ExtWinStyleBorder": [ 0.16, 0.0, 0.28, 1.0 ],
+  "ExtWinStyleColor": [ 0.16, 0.0, 0.28, 1.0 ],
+  "ExtWinStyleEnableBlur": false
+}

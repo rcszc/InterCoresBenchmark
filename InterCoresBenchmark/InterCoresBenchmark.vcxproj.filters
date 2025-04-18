@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\InterCoresSystem">
+      <UniqueIdentifier>{957ebf4f-9952-4a4a-af2c-ec9eecf6a26c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\InterCoresSystem\system_benchmark">
+      <UniqueIdentifier>{108cecd6-9152-46c6-9960-81e4a186611f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\InterCoresSystem\system_window">
+      <UniqueIdentifier>{1ef177f9-6094-4bf6-b2ef-5d62dca9f0f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="资源文件\imgui">
+      <UniqueIdentifier>{8061fd3c-7e2d-4be9-88ce-1fb601513757}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="资源文件\Configs">
+      <UniqueIdentifier>{cded9229-65f3-441a-8d1b-e8a885932db5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="InterCoresBenchmark.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\imgui_library\imgui.cpp">
+      <Filter>资源文件\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\imgui_library\imgui_demo.cpp">
+      <Filter>资源文件\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\imgui_library\imgui_draw.cpp">
+      <Filter>资源文件\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\imgui_library\imgui_impl_glfw.cpp">
+      <Filter>资源文件\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\imgui_library\imgui_impl_opengl2.cpp">
+      <Filter>资源文件\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\imgui_library\imgui_impl_opengl3.cpp">
+      <Filter>资源文件\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\imgui_library\imgui_tables.cpp">
+      <Filter>资源文件\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\imgui_library\imgui_widgets.cpp">
+      <Filter>资源文件\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="InterCoresSystem\psag_system_logger.cpp">
+      <Filter>源文件\InterCoresSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="InterCoresSystem\system_window\window_graphics_draw.cpp">
+      <Filter>源文件\InterCoresSystem\system_window</Filter>
+    </ClCompile>
+    <ClCompile Include="InterCoresSystem\system_benchmark\benchmark_inter_cores_system.cpp">
+      <Filter>源文件\InterCoresSystem\system_benchmark</Filter>
+    </ClCompile>
+    <ClCompile Include="InterCoresSystem\system_benchmark\toolkits_thread_pool.cpp">
+      <Filter>源文件\InterCoresSystem\system_benchmark</Filter>
+    </ClCompile>
+    <ClCompile Include="InterCoresSystem\system_benchmark\benchmark_inter_cores_sample.cpp">
+      <Filter>源文件\InterCoresSystem\system_benchmark</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="InterCoresSystem\system_window\window_graphics.h">
+      <Filter>源文件\InterCoresSystem\system_window</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\imgui_library\imconfig.h">
+      <Filter>资源文件\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\imgui_library\imgui.h">
+      <Filter>资源文件\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\imgui_library\imgui_impl_glfw.h">
+      <Filter>资源文件\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\imgui_library\imgui_impl_opengl2.h">
+      <Filter>资源文件\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\imgui_library\imgui_impl_opengl3.h">
+      <Filter>资源文件\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\imgui_library\imgui_impl_opengl3_loader.h">
+      <Filter>资源文件\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\imgui_library\imgui_internal.h">
+      <Filter>资源文件\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\imgui_library\imstb_rectpack.h">
+      <Filter>资源文件\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\imgui_library\imstb_textedit.h">
+      <Filter>资源文件\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\imgui_library\imstb_truetype.h">
+      <Filter>资源文件\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="InterCoresSystem\system_window\window_graphics_imgui.hpp">
+      <Filter>源文件\InterCoresSystem\system_window</Filter>
+    </ClInclude>
+    <ClInclude Include="InterCoresSystem\psag_system_logger.hpp">
+      <Filter>源文件\InterCoresSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="InterCoresSystem\shared_define.h">
+      <Filter>源文件\InterCoresSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="InterCoresSystem\system_benchmark\benchmark_inter_cores.h">
+      <Filter>源文件\InterCoresSystem\system_benchmark</Filter>
+    </ClInclude>
+    <ClInclude Include="InterCoresSystem\system_benchmark\toolkits_thread_pool.hpp">
+      <Filter>源文件\InterCoresSystem\system_benchmark</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Configs\window_panel_config.json">
+      <Filter>资源文件\Configs</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="InterCoresBenchmark.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="C:\Users\Administrator\Desktop\inter_cores_benchmark_logo.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
