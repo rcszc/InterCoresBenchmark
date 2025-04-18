@@ -1,7 +1,7 @@
 ﻿// InterCoresBenchmark. 2025_04_10 By RCSZ.
 // library: opengl, glfw, glew, imgui
 // cpu inter cores speed benchmark.
-// update: 2025_04_10, version: 0.1.0.0410 rcsz.
+// update: 2025_04_19, version: 0.1.1.0419 rcsz.
  
 #pragma comment(lib, "opengl32.lib")
 #pragma comment(lib, "glfw3.lib")
