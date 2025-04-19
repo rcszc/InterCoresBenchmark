@@ -1,7 +1,7 @@
 ﻿// InterCoresBenchmark. 2025_04_10 By RCSZ.
 // library: opengl, glfw, glew, imgui
 // cpu inter cores speed benchmark.
-// update: 2025_04_19, version: 0.1.1.0419 rcsz.
+// update: 2025_04_20, version: 0.1.2.0420 rcsz.
  
 #pragma comment(lib, "opengl32.lib")
 #pragma comment(lib, "glfw3.lib")
@@ -55,14 +55,15 @@ enum SystemTestingState {
 class GuiPanelDraw :public SystemWindow::GuiRenderInterface {
 private:
 	vector<float> RainbowRuler = {};
-
 	SystemTestingState TestingStatus = TestingClose;
 	BenchmarkController* TestingController = nullptr;
-	float TestingBenchmark = 0.0f;
+	float TestingProgress = 0.0f;
 protected:
 	BenchmarkExport ExportData = {};
 	vector<vector<float>>* DataReference = &ExportData.CoresInterTime;
-	ImVec2 DataValueLimit = {};
+
+	ImVec2      DataValuesLimit = {};
+	const char* DataValuesUnit  = "ns";
 
 	void DrawComponentColorBar(
 		const ImVec2& size, const ImVec2& limit, float* data, size_t count,
@@ -85,7 +86,8 @@ protected:
 	}
 
 	void DrawComponentXRuler(
-		const ImVec2& limit, float scale, size_t count, const ImVec4& color
+		const ImVec2& limit, float scale, size_t count, const ImVec4& color,
+		const char* unit = ""
 	) {
 		ImGui::BeginChild("RULER");
 		float RulerOffset = 
@@ -99,7 +101,7 @@ protected:
 				color, 3.2f);
 			ListDrawCenterText(
 				ImVec2(RulerOffset * (float)i, scale * 2.25f), 
-				color, "%.0f", limit.x + RulerScale * FCount);
+				color, "%.0f %s", limit.x + RulerScale * FCount, unit);
 		}
 		ImGui::EndChild();
 	}
@@ -116,7 +118,7 @@ protected:
 		ImGui::Begin("##OPER_WIN", (bool*)0, WindowFlags);
 
 		ImVec2 ButtonSize(142.0f, OperWindowHeight - IMGUI_ITEM_SPAC * 4.0f);
-		ImGui::ProgressBar(TestingBenchmark, ImVec2(256.0f, ButtonSize.y));
+		ImGui::ProgressBar(TestingProgress, ImVec2(256.0f, ButtonSize.y));
 
 		switch (TestingStatus) {
 		case(TestingClose):
@@ -128,20 +130,22 @@ protected:
 			}
 			ImGui::SameLine();
 			if (ImGui::Button("Time", ButtonSize * ImVec2(0.5f, 1.0f))) {
+				DataValuesUnit = "ns";
+				DataValuesLimit = ImVec2(ExportData.TimesMin, ExportData.TimesMax);
 				DataReference = &ExportData.CoresInterTime;
-				DataValueLimit = ImVec2(ExportData.TimesMin, ExportData.TimesMax);
 			}
 			ImGui::SameLine();
 			if (ImGui::Button("Tick", ButtonSize * ImVec2(0.5f, 1.0f))) {
+				DataValuesUnit = "t";
+				DataValuesLimit = ImVec2(ExportData.TicksMin, ExportData.TicksMax);
 				DataReference = &ExportData.CoresInterTicks;
-				DataValueLimit = ImVec2(ExportData.TicksMin, ExportData.TicksMax);
 			}
 			break;
 		case(TestingStart):
 			TestingStatus = TestingController->BenchmarkRunStep() == true ?
 				TestingDelete : TestingStart;
-			TestingBenchmark += VALUE_LERP(
-				TestingController->BenchmarkProgress, TestingBenchmark
+			TestingProgress += VALUE_LERP(
+				TestingController->BenchmarkProgress, TestingProgress
 			);
 			break;
 		case(TestingDelete):
@@ -149,9 +153,9 @@ protected:
 			TestingController->BenchmarkStatusDelete();
 			delete TestingController;
 			// reset system status.
-			TestingBenchmark = 1.0f;
+			TestingProgress = 1.0f;
 			TestingStatus = TestingClose;
-			DataValueLimit = ImVec2(ExportData.TimesMin, ExportData.TimesMax);
+			DataValuesLimit = ImVec2(ExportData.TimesMin, ExportData.TimesMax);
 			DataReference = &ExportData.CoresInterTime;
 			break;
 		}
@@ -221,8 +225,9 @@ public:
 		ImGui::PopID();
 
 		ImGui::SetCursorPosY(BarWindowHeight + IMGUI_ITEM_SPAC * 2.0f);
-		DrawComponentXRuler(DataValueLimit,
-			12.0f, 10, ImVec4(0.0f, 1.0f, 0.85f, 0.85f)
+		DrawComponentXRuler(DataValuesLimit,
+			12.0f, 10, ImVec4(0.0f, 1.0f, 0.85f, 0.85f),
+			DataValuesUnit
 		);
 		float GridSpace = (float)FAST_SAFE_DIV(128, DataReference->size() - 1);
 
@@ -233,14 +238,13 @@ public:
 			ImGui::PushID(++ImGuiItemsAllocID);
 			DrawComponentColorBar(
 				ImVec2(ImGui::GetWindowWidth() - IMGUI_ITEM_SPAC * 2.0f, BarWindowHeight),
-				DataValueLimit, DataItem.data(), DataItem.size(), GridSpace, 42.0f
+				DataValuesLimit, DataItem.data(), DataItem.size(), GridSpace, 42.0f
 			);
 			ImGui::PopID();
-			ListDrawText(
-				ImVec2(IMGUI_ITEM_SPAC, PosOffset),
-				ImVec4(0.0f, 1.0f, 0.85f, 0.85f),
-				"%u", CoreNumberCount++
-			);
+			ImVec2 ReposCoord = ImGui::GetCursorPos();
+			ImGui::SetCursorPos(ImVec2(IMGUI_ITEM_SPAC, PosOffset));
+			ImGui::Text("%u", CoreNumberCount++);
+			ImGui::SetCursorPos(ReposCoord);
 			PosOffset += BarWindowHeight + GridSpace;
 		}
 		ImGui::End();

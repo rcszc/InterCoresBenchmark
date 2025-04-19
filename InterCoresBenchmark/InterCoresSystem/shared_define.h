@@ -11,7 +11,7 @@
 
 constexpr const char* GLOBAL_CONFIG_JSON  = "Configs/window_panel_config.json";
 constexpr const char* GLOBAL_CONFIG_LOGO  = "Configs/inter_cores_benchmark_logo.png";
-constexpr const char* GLOBAL_CONFIG_TITLE = "InterCores-Benchmark";
+constexpr const char* GLOBAL_CONFIG_TITLE = "InterCores-Benchmark RCSZ(C)";
 
 constexpr size_t TESTING_BLOCKS_GROUP = 1280;
 

@@ -2,8 +2,8 @@
 
 CPU 核心互联延迟基准测试 ( cores interconnection benchmark )
 
->- Update: 2025.04.19
->- Version: 0.1.1.0419 / 16-32K Release EXE
+`Update: 2025.04.20` `Version: 0.1.2.0420`
+> 修复显示 BUG 增加热度尺数据单位显示
 
 ---
 
